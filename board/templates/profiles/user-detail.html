@@ -1,0 +1,16 @@
+{% extends 'default.html' %}
+{% block content %}
+    <h3>Личный кабинет {{ profile.first_name }}</h3>
+    {% if profile.avatar %}
+        <p><img src="{{ profile.avatar.url }}" height = "200" with = "200" /></p>
+    {%  endif %}
+    <p>Имя: {{ profile.first_name }}</p>
+    <p>Фамилия: {{ profile.last_name }}</p>
+    <p>e-mail: {{ profile.email_two }}</p>
+    <p>Телефон: {{ profile.phone }}</p>
+
+
+{% if user.is_authenticated and profile.user == user %}
+    <a href= "{% url 'profile_update' profile.id %}"><button>Редактировать</button></a>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'default.html' %}
+
+{% block content %}
+<h1>Изменить информацию пользователя {{ profile_user }}</h1>
+<hr>
+{% if profile.user == user and user.is_authenticated %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Сохранить" />
+</form>
+{% else %}
+<h3>Вы не можете редактировать эту страницу!</h3>
+{% endif %}
+{% endblock content %}
